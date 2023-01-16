@@ -20,6 +20,7 @@ sudo bash /tmp/installDocker.sh
 ## Install Docker latest
 sudo apt-get update ; clear
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+#sudo snap install docker #use this if the above command fails
 
 ## Test the installation by running a simple container:
 
