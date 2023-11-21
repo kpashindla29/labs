@@ -11,7 +11,9 @@ kind: Pod
 apiVersion: v1 
 metadata:
   name: cm-pod-ex1 
-spec:
+  labels: 
+    app: nginx
+ spec:
   containers:
     - name: cm-pod-cont
       image: nginx
