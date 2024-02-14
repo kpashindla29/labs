@@ -20,6 +20,7 @@ sudo bash /tmp/installDocker.sh
 ## Install Docker latest
 sudo apt-get update ; clear
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+#sudo snap install docker #use this if the above command fails
 
 ## Test the installation by running a simple container:
 
@@ -44,6 +45,18 @@ sudo systemctl enable docker
 ```
 
 # Add your user to the docker group
+```
+why?
+
+By Default docker software needs root previlige to run on a server
+when we install it also it starts runnings as root user
+so, a regular user can not run / use docker commands 
+
+also, when you installed docker software it creates a system group called docker
+
+so that, we can add regular users (ex: devops/ubuntu) on system to the docker group, 
+with which regular users (ex: devops/ubuntu) can run docker commands
+```
 ```
 ## Add your user to the docker group, giving the user permission to run docker commands:
 
