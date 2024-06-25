@@ -9,18 +9,22 @@ sudo bash /tmp/installDocker.sh
 
 ### Install Docker on Ubuntu:
 ```
- sudo apt-get update
- sudo apt-get install -y apt-transport-https ca-certificates curl gnupg software-properties-common lsb-release
- 
- ## Add Dockers official GPG key & stable repo
- sudo mkdir -p /etc/apt/keyrings
- curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
- echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+yes | sudo apt-get update
+yes | sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-## Install Docker latest
-sudo apt-get update ; clear
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-#sudo snap install docker #use this if the above command fails
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+yes | sudo apt-get update
+
+yes | sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
 
 ## Test the installation by running a simple container:
 
