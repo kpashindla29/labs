@@ -2,12 +2,10 @@
 ## Assuming Ubuntu, if amazon linux, aws cli will be there by default. 
 
 ```
-apt-get update 
-apt install python3-pip
+sudo apt-get update 
+sudo apt install curl unzip -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 
- 
-pip install awscli 
-pip install boto
-
- aws --version
 ```
