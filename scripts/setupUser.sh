@@ -97,7 +97,7 @@ update_conf()
         #sed -i '/PermitRootLogin.*prohibit-password/d' $sshdfile
         #echo "PermitRootLogin yes" >> $sshdfile
         echo "updated $sshdfile Successfully -- restarting sshd service"
-        systemctl restart ssh
+        service ssh restart
    else
         echo "could not find $sshdfile"
    fi
@@ -107,7 +107,7 @@ update_conf()
 
 USER="devops"
 GROUP="devops"
-passw="ab@1234"
+passw="today@1234"
 
 if id -u "$USER" &>/dev/null; then 
    echo "devops user exists no action required.."
